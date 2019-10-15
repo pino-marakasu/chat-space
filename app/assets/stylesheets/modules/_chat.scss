@@ -12,9 +12,10 @@
         color: #333;
       }
       &__members{
-        display: flex;
+        // display: flex;
+        @include flexbox;
         font-size: 12px;
-        color: #999999;
+        color: $light_gray;
         margin-top: 15px; 
         .member{
           display: inline-block;
@@ -22,7 +23,7 @@
         }
       }
     }
-    .rihgt-header{
+    .right-header{
       height: 40px;
       line-height: 40px;
       padding: 0 20px;
@@ -30,6 +31,17 @@
       border: 1px solid $light_blue;
       color: $light_blue;
       float: right;
+      &__button {
+        border: 1px solid $light_blue;
+        position: absolute;
+        margin: 30px 0 0;
+        padding: 0 20px;
+        right: 40px;
+        height: 40px;
+        line-height: 40px;
+        color: $light_blue;
+        text-decoration: none;
+      }
     }
   }
 
@@ -42,12 +54,12 @@
       .upper-message{
         display: flex;
         &__user-name{
-          color: #434a54;
+          color: $black;
           font-size: 16px;
           font-weight: bold;  
         }
         &__date{
-          color: #999999;
+          color: $light_gray;
           font-size: 12px;
           padding-left: 10px;
         }
@@ -56,7 +68,7 @@
         position: relative;
         margin-top: 10px;
         &__content{
-          color: #434a54;
+          color: $black;
           font-size: 14px;
           margin-bottom: 40px;
         }
@@ -104,4 +116,4 @@
     }
   }
 }
-
+ 
