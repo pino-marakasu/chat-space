@@ -22,8 +22,6 @@ li {
   font-size: 13px;
 }
 
-
-
 .chat-group-form {
   width: 980px;
   margin: 60px auto;
@@ -44,6 +42,7 @@ li {
     line-height: 50px;
     font-weight: bold;
     text-align: right;
+    
   }
   &__input {
     float: left;
@@ -72,6 +71,9 @@ li {
       padding-right: 20px;
       padding-left: 20px;
       box-sizing: border-box;
+      line-height: 50px;
+      font-weight: bold;
+      text-align: right;
     }
     &--right {
       float: right;
