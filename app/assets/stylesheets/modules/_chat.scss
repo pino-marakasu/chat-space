@@ -53,6 +53,7 @@
     .messsage{ 
       .upper-message{
         display: flex;
+        margin-bottom: 10px;
         &__user-name{
           color: $black;
           font-size: 16px;
