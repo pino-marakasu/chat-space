@@ -1,3 +1,4 @@
+// $(document).on('turbolinks:load', function(){
 $(function(){
   function buildHTML(message){
     if ( message.image ) {
@@ -16,7 +17,7 @@ $(function(){
               ${message.content}
             </p>
           </div>
-          <img src=${message.image} >
+          <img src=${message.image} height="200" wedth="200">
         </div>`
       return html;
     } else {
@@ -39,10 +40,10 @@ $(function(){
       return html;
     };
   };
-  $('.js-form').on('submit', function(e){
+  $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
     $.ajax({
       url: url,
       type: "POST",
@@ -54,9 +55,12 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html);
-      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');  
       $('form')[0].reset();
       $('form').prop('disabled',false);
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      // function ScrollToNewMessage(){
+      //   $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      // }
     })
     .fail(function(){
       alert('error');
