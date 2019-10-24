@@ -1,4 +1,3 @@
-// $(document).on('turbolinks:load', function(){
 $(function(){
   function buildHTML(message){
     if ( message.image ) {
