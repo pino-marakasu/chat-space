@@ -1,9 +1,17 @@
 .chat{
   width: calc(100% - 300px);
+  float: left;
   .header{
     height: 100px;
     padding: 0 40px;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px #eee;
+    overflow-y: scroll;
+  }
+  .header::-webkit-scrollbar {
+    display: none;
+  }
     .left-header{
       float: left;
       &__title{
@@ -12,14 +20,14 @@
         color: #333;
       }
       &__members{
-        // display: flex;
+        display: flex;
         @include flexbox;
         font-size: 12px;
         color: $light_gray;
         margin-top: 15px; 
         .member{
           display: inline-block;
-          padding-right: 5px;
+          margin-left: 0.3rem;
         }
       }
     }
@@ -43,55 +51,58 @@
         text-decoration: none;
       }
     }
-  }
 
   .messages{
     box-sizing: border-box;
     padding: 46px 40px;
     background: #FAFAFA;
-    height: calc(100% - 100px - 90px);
-    .messsage{ 
-      .upper-message{
-        display: flex;
-        &__user-name{
-          color: $black;
-          font-size: 16px;
-          font-weight: bold;  
-        }
-        &__date{
-          color: $light_gray;
-          font-size: 12px;
-          padding-left: 10px;
-        }
-      }
-      .lower-message{
-        position: relative;
-        margin-top: 10px;
-        &__content{
-          color: $black;
-          font-size: 14px;
-          margin-bottom: 40px;
-        }
-      }
-    } 
+    height: calc(100vh - 100px - 90px);
+    overflow-y: scroll;
   }
-
+  .messages::-webkit-scrollbar {
+    display: none;
+  }
+  .messsage{   
+    padding-bottom: 40px;
+    .upper-message{
+      display: flex;
+      margin-bottom: 10px;
+      &__user-name{
+        color: $black;
+        font-size: 16px;
+        font-weight: bold;  
+      }
+      &__date{
+        color: $light_gray;
+        font-size: 12px;
+        padding-left: 10px;
+      }
+    }
+    .lower-message{
+      position: relative;
+      margin-top: 10px;
+      &__content{
+        color: $black;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    }
+  } 
+  
   .form{
-    // // position: absolute;
-    // bottom: 0px;
     right: 0px;
-    // width: calc(100% - 300px);
     height: 90px;
     padding: 20px 40px;
     background-color: #ddd;
     box-sizing: border-box;
+    bottom: 0;
     &__message{
       border: none;
       float: left;
       height: 50px;
       width: calc(100% - 150px);
       border-style: none;
-      color: $black; 
+      color: $black;      
     }
     &__mask{
       background-color: $white;
@@ -99,8 +110,9 @@
       height: 50px;
       padding-right: 10px;
       &__image{
-        font-size: 20px;
+        font-size: 1.3rem;
         line-height: 50px;
+        cursor: pointer;      
       }
      .hidden{
        display: none;
@@ -115,7 +127,8 @@
       border: none;
       float: right;
       font-size: 16px;
+      cursor: pointer;
+      width: 100px;
     }
   }
 }
- 

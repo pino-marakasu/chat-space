@@ -1,14 +1,29 @@
-// $(function(){
-//   function buildHTML(message){
-//     var html = `<div class="message">
-//                   ${message.text}
-//                 </div>`
-//     return html;
-//   }
-  $('.js-form').on('submit', function(e){
+$(function(){
+  function buildHTML(message){
+    image = ( message.image ) ? `<img src="${message.image}" class="lower-message__image">` : "";
+      var html = 
+       `<div class="message" data-message_id=${message.id}>
+          <div class="upper-message">
+            <div class="upper-message__user-name">
+              ${message.user_name}
+            </div>
+            <div class="upper-message__date">
+              ${message.date}
+            </div>
+          </div>
+          <div class="lower-message">
+            <p class="lower-message__content">
+              ${message.content}
+            </p>
+          </div>
+          ${image}
+        </div>`
+      return html;
+  }
+  $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
     $.ajax({
       url: url,
       type: "POST",
@@ -19,15 +34,17 @@
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html)
-      $('.form_message').val('')
-      // ここにajaxの仕様で連続投稿できるように書く
-       // $('#form-submit').attr('disabled',false);
-      //  $('#form-submit').removeAttr('data-disable-with');
-       // autoScroll();
+      $('.messages').append(html);
+      $('form')[0].reset();
+      $('form').prop('disabled',false);
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      // function ScrollToNewMessage(){
+      //   $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      // }
     })
     .fail(function(){
       alert('error');
-    })
-  })
+    });
+    return false;
+  });
 });
