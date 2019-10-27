@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'groups#index'
+  root 'users#index'
+  
   devise_for :users
   # , contollers: {
   #   registrations: 'users/registrations',
