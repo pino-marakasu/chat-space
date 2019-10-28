@@ -51,5 +51,10 @@ $(function() {
       alert("通信エラーです。ユーザーが表示できません");
     });
   })
+
+  $(document).on("click",".user-search-add.chat-group-user__btn.chat-group-user__btn--add",function() {
+    console.log(document)
+  })
+  
 });
 
