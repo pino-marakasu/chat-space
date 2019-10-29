@@ -1,8 +1,6 @@
 $(function() {
 
   var search_list = $("#user-search-result");
-  var member_list = $(".chat-group-user__name");
-
 
   function appendUser(user) {
     var html = `
@@ -32,7 +30,7 @@ $(function() {
                 <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
               </div>
               `;
-    member_list.append(html);
+    $('#chat-group-users').append(html);
   }
  
   $("#user-search-field").on("keyup", function() {
@@ -58,14 +56,14 @@ $(function() {
     })
   });
 
-  $(document).on("click", ".user-search-add", function() {
+  $('#user-search-result').on("click", ".chat-group-user__btn--add", function() {
     var name = $(this).attr("data-user-name");
     var user_id =$(this).attr("data-user-id");
     $(this).parent().remove();
     appendDeleteUser(name, user_id);
   });
   
-  $(document).on("click", ".user-search-remove", function() {
+  $('#chat-group-users').on("click", ".chat-group-user__btn--remove", function() {
     $(this).parent().remove();
   });
 });
