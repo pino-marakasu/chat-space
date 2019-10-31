@@ -8,7 +8,7 @@ $(function(){
               ${message.user_name}
             </div>
             <div class="upper-message__date">
-              ${message.date}
+              ${message.created_at}
             </div>
           </div>
           <div class="lower-message">
@@ -16,7 +16,7 @@ $(function(){
               ${message.content}
             </p>
           </div>
-          ${image}
+          ${message.image.url}
         </div>`
       return html;
   }
@@ -32,8 +32,8 @@ $(function(){
       processData: false,
       contentType: false
     })
-    .done(function(message){
-      var html = buildHTML(message);
+    .done(function(data){
+      var html = buildHTML(data);
       $('.messages').append(html);
       $('form')[0].reset();
       $('form').prop('disabled',false);
@@ -48,10 +48,10 @@ $(function(){
 
   var reloadMessages = function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      var last_message_id = $('.message:last').data("message-id");
+      var last_message_id = $('.message:last').data("id");
       $.ajax({
         url: 'api/messages',
-        type: 'get',
+        type: 'GET',
         dataType: 'json',
         data: {id: last_message_id}
       })
@@ -60,8 +60,8 @@ $(function(){
         messages.forEach(function (message) {
           var insertHTML = buildHTML(message);
           $('.messages').append(insertHTML);
+          $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
         })
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
       })
       .fail(function() {
         alert('自動更新に失敗しました');
