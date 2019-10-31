@@ -51,7 +51,7 @@ $(function(){
 
   var reloadMessages = function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      last_message_id = $('.message:last').data("id");
+      var last_message_id = $('.message:last').data("id");
       $.ajax({
         url: 'api/messages',
         type: 'get',
@@ -59,13 +59,16 @@ $(function(){
         data: {id: last_message_id}
       })
       .done(function(messages) {
-        console.log('success');
+        var insertHTML = '';
+        messages.forEach(function(message){
+          insertHTML = buildHTML(message);
+          $('.messages').append(insertHTML);
+        }); 
       })
       .fail(function() {
-        console.log('error');
+        alert('自動更新に失敗しました');
       });
     };
   }
-
 
 });
