@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     image = ( message.image ) ? `<img src="${message.image}" class="lower-message__image">` : "";
       var html = 
-       `<div class="message" data-message_id=${message.id}>
+       `<div class="message" data-message-id=${message.id}>
           <div class="upper-message">
             <div class="upper-message__user-name">
               ${message.user_name}
@@ -16,7 +16,7 @@ $(function(){
               ${message.content}
             </p>
           </div>
-          ${message.image.url}
+          ${image}
         </div>`
       return html;
   }
@@ -43,7 +43,7 @@ $(function(){
       alert('error');
     });
     return false;
-  });
+  })
 
 
   var reloadMessages = function() {
@@ -57,7 +57,7 @@ $(function(){
       })
       .done(function (messages) {
         var insertHTML = '';
-        messages.forEach(function (message) {
+        messages.forEach(function(message) {
           var insertHTML = buildHTML(message);
           $('.messages').append(insertHTML);
           $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
@@ -68,5 +68,5 @@ $(function(){
       });
     };
   }
-  setInterval(reloadMessages, 8000);
+  setInterval(reloadMessages, 5000);
 });
