@@ -63,32 +63,33 @@
   .messages::-webkit-scrollbar {
     display: none;
   }
-    .messsage{   
-      padding-bottom: 40px;
-      .upper-message{
-        display: flex;
-        margin-bottom: 10px;
-        .upper-message__user-name{
-          color: $black;
-          font-size: 16px;
-          font-weight: bold;  
-        }
-        .upper-message__date{
-          color: $light_gray;
-          font-size: 12px;
-          padding-left: 10px;
-        }
-      }
-      .lower-message{
-        position: relative;
-        margin-top: 10px;
-        .lower-message__content{
-          color: $black;
-          font-size: 14px;
-          margin-bottom: 10px;
-        }
-      }
-    } 
+  .messsage{   
+    padding-bottom: 40px;
+  }
+  .upper-message{
+    display: flex;
+    margin-bottom: 10px;
+    .upper-message__user-name{
+      color: $black;
+      font-size: 16px;
+      font-weight: bold;  
+    }
+    .upper-message__date{
+      color: $light_gray;
+      font-size: 12px;
+      padding-left: 10px;
+    }
+  }
+  .lower-message{
+    position: relative;
+    margin-top: 10px;
+    .lower-message__content{
+      color: $black;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  }
+
   
   .form{
     right: 0px;
