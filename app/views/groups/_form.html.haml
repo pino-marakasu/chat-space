@@ -24,7 +24,6 @@
       = f.label "チャットメンバー", class: 'chat-group-form__label'
     .chat-group-form__field--right
       #chat-group-users
-            - unless user.id == current_user.id
         #chat-group-user.chat-group-user.clearfix
           - group.users.each do |user|
             = user.name unless user.id == current_user.id
