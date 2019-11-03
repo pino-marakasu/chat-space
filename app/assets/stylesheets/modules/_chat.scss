@@ -12,46 +12,41 @@
   .header::-webkit-scrollbar {
     display: none;
   }
-    .left-header{
-      float: left;
-      &__title{
         margin-top: 35px;
-        font-size: 20px;
-        color: #333;
-      }
-      &__members{
-        display: flex;
-        @include flexbox;
-        font-size: 12px;
-        color: $light_gray;
-        margin-top: 15px; 
-        .member{
-          display: inline-block;
-          margin-left: 0.3rem;
-        }
+  .left-header{
+    float: left;
+    margin-top: 35px;
+    font-size: 20px;
+    &__title{
+      color: #333;
+    }
+    &__members{
+      display: flex;
+      @include flexbox;
+      font-size: 12px;
+      color: $light_gray;
+      margin-top: 15px; 
+      .member{
+        display: inline-block;
+        margin-left: 0.3rem;
       }
     }
-    .right-header{
+  }
+  .right-header{
+    &__button {
+      text-decoration: none;
       height: 40px;
       line-height: 40px;
       padding: 0 20px;
-      margin-top: 28px;
+      margin-top: 30px;
       border: 1px solid $light_blue;
       color: $light_blue;
       float: right;
-      &__button {
-        border: 1px solid $light_blue;
-        text-decoration: none;
-        position: absolute;
-        margin: 30px 0 0;
-        padding: 0 20px;
-        right: 40px;
-        height: 40px;
-        line-height: 40px;
-      color: $light_blue;
-        cursor: pointer;
-      }
+      position: absolute;
+      right: 40px;
+      cursor: pointer;
     }
+  }
 
   .messages{
     box-sizing: border-box;
