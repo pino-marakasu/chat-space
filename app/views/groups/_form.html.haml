@@ -24,15 +24,19 @@
       = f.label "チャットメンバー", class: 'chat-group-form__label'
     .chat-group-form__field--right
       #chat-group-users
-        #chat-group-user.chat-group-user.clearfix
-          - group.users.each do |user|
-            = user.name unless user.id == current_user.id
-            .chat-group-users.clearfix{ id: "chat-group-user-#{ user.id }" }
-              %input{name: "group[user_ids][]", type: "hidden", value: user.id }
+        .chat-group-user.clearfix{ 'data-id': current_user.id }
+          = hidden_field_tag 'group[user_ids][]', current_user.id
+          %p.chat-group-user__name
+            = current_user.name
+        - group.users.each do |user|
+          - unless user == current_user
+            .chat-group-user.clearfix{ 'data-id': current_user.id, id: "user_#{user.id}" }
+              = hidden_field_tag 'group[user_ids][]', user.id 
               %p.chat-group-user__name 
-              - unless user.id == current_user.id
-                %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove{ 'data-user-id': user.id } 削除
-          
+                = user.name
+              %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove{ "data-id": user.id, "data-name": user.name } 
+                削除
+        
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
